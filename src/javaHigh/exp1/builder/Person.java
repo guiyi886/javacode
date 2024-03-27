@@ -13,6 +13,7 @@ public class Person {
     private final String job;
     private final String gender;
 
+    // 如果不用泛型<?>，会导致子类构造函数的builder用的是父类的builder
     Person(Builder<?> builder) {
         name = builder.name;
         age = builder.age;

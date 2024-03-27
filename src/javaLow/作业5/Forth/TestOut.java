@@ -1,4 +1,4 @@
-package javaLow.javaLow.作业5.Forth;
+package javaLow.作业5.Forth;
 
 public class TestOut {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package javaLow.javaLow.作业2;
+package javaLow.作业2;
 
 import java.io.*;
 import java.util.HashMap;

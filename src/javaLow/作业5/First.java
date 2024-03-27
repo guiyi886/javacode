@@ -1,4 +1,4 @@
-package javaLow.javaLow.作业5;
+package javaLow.作业5;
 
 import java.util.ArrayList;
 import java.util.List;

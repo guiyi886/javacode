@@ -1,4 +1,4 @@
-package javaLow.javaLow.作业4;
+package javaLow.作业4;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

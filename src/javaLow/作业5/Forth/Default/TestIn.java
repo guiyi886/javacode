@@ -1,9 +1,9 @@
-package javaLow.javaLow.作业5.Forth.Default;
+package javaLow.作业5.Forth.Default;
 
 public class TestIn {
     public static void main(String[] args) {
         // 创建 DefaultClass 实例
-        DefaultClass defaultClass = new DefaultClass();
+        javaLow.javaLow.作业5.Forth.Default.DefaultClass defaultClass = new javaLow.javaLow.作业5.Forth.Default.DefaultClass();
 
         // 在同一个包中，可以访问 DefaultClass 的除私有变量外的其他成员变量
 //        System.out.println("defaultClass.privateMember: " + defaultClass.privateMember);

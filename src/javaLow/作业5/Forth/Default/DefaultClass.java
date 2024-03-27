@@ -1,4 +1,4 @@
-package javaLow.javaLow.作业5.Forth.Default;
+package javaLow.作业5.Forth.Default;
 
 class DefaultClass {
     private int privateMember = 1;

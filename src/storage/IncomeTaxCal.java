@@ -1,4 +1,4 @@
-package javaLow;
+package storage;
 
 /**
  * Person类包含了纳税人的子女个数、继续教育情况、住房贷款情况、租房信息、赡养老人情况、兄弟姐妹个数

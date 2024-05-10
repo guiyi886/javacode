@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @ClassName javaHigh.expTwo.DenseMatrix
  * @function -->
  */
-public class DenseMatrix {
+public class DenseMatrix implements SVDSolve<DenseMatrix> {
     private final double[][] matrix;
     private final int rows;
     private final int cols;
@@ -73,5 +73,46 @@ public class DenseMatrix {
         result = 31 * result + rows;
         result = 31 * result + cols;
         return result;
+    }
+
+    @Override
+    public DenseMatrix solve(DenseMatrix mat) {
+        System.out.println("求解矩阵方程结果。");
+        return mat; // 简单返回原矩阵
+    }
+
+    @Override
+    public DenseMatrix[] Decompose() {
+        System.out.println("对矩阵进行分解。");
+        return new DenseMatrix[]{this}; // 简单返回原矩阵的副本
+    }
+
+    @Override
+    public void SVD() {
+        System.out.println("进行 SVD 分解。");
+    }
+
+    @Override
+    public DenseMatrix getU() {
+        System.out.println("获取 SVD 分解出的 U 矩阵。");
+        return this; // 简单返回原矩阵
+    }
+
+    @Override
+    public DenseMatrix getSigma() {
+        System.out.println("获取 SVD 分解出的 Σ 矩阵。");
+        return this; // 简单返回原矩阵
+    }
+
+    @Override
+    public DenseMatrix getV() {
+        System.out.println("获取 SVD 分解出的 V 矩阵。");
+        return this; // 简单返回原矩阵
+    }
+
+    @Override
+    public DenseMatrix compute(DenseMatrix mat) {
+        System.out.println("将矩阵的分解和方程的求解合并为一步。");
+        return mat; // 简单返回原矩阵
     }
 }

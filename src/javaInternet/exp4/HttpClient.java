@@ -3,6 +3,7 @@ package javaInternet.exp4;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Date;
 
 public class HttpClient {
     public static void main(String[] args) {
@@ -23,9 +24,9 @@ public class HttpClient {
             url = new URL("http://localhost:8080/");
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
-            connection.setDoOutput(true);
+            connection.setDoOutput(true); // 允许向服务器发送数据
             OutputStream os = connection.getOutputStream();
-            os.write("POST请求体内容".getBytes());
+            os.write("POST请求体内容".getBytes()); // 发送POST请求体内容
             os.flush();
             os.close();
             saveResponse(connection, "POST");
@@ -34,7 +35,9 @@ public class HttpClient {
         }
     }
 
+    // 保存服务器响应的方法
     private static void saveResponse(HttpURLConnection connection, String requestType) throws IOException {
+        // 获取响应码
         int responseCode = connection.getResponseCode();
         System.out.println("响应码: " + responseCode);
         // 打印响应头
@@ -49,15 +52,18 @@ public class HttpClient {
         // 获取响应体输入流
         InputStream inputStream = connection.getInputStream();
 
-        // 创建目录
-        File directory = new File("./src/javaInternet/exp4/response/" + requestType);
-        if (!directory.exists()) {
-            directory.mkdirs(); // 创建目录及其父目录
-        }
+        if (!"HEAD".equals(connection.getRequestMethod())) { // HEAD请求没有响应体
+            // 创建目录
+            File directory = new File("./src/javaInternet/exp4/response/" + requestType);
+            if (!directory.exists()) {
+                directory.mkdirs(); // 创建目录及其父目录
+            }
 
-        if (!"HEAD".equals(connection.getRequestMethod())) {
-            // 创建文件
-            File file = new File(directory, "response" + System.currentTimeMillis() + getFileExtension(contentType));
+            Date date = new Date();
+            // 创建文件，文件名为当前日期时间加上合适的扩展名
+            File file = new File(directory,
+                    (date.getYear() + 1900) + "-" + (date.getMonth() + 1) + "-" + date.getDate() + "-" + date.getHours()
+                            + "-" + date.getMinutes() + "-" + date.getSeconds() + getFileExtension(contentType));
             FileOutputStream outputStream = new FileOutputStream(file);
 
             // 保存响应内容到文件
@@ -78,6 +84,7 @@ public class HttpClient {
         }
     }
 
+    // 根据Content-Type获取文件扩展名
     private static String getFileExtension(String contentType) {
         if (contentType.contains("text/html")) {
             return ".html";

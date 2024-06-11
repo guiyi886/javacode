@@ -46,9 +46,11 @@ public class SimpleHttpServer {
                 if (requestParts.length < 3) return;
 
                 String method = requestParts[0];
-                String fileRequested = requestParts[1];
-                if (fileRequested.equals("/")) {
+                String fileRequested = "";
+                if ("GET".equals(method)) {
                     fileRequested = "/index.html";
+                } else if ("POST".equals(method)) {
+                    fileRequested = "/photo.jpeg";
                 }
 
                 File file = new File(WEB_ROOT, fileRequested);
